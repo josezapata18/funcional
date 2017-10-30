@@ -19,7 +19,6 @@ Prerequisitos
 1. Crear MV en Cloud9 clonando del siguiente repositorio https://github.com/mzabala23/PF_RubyRails/tree/proyecto y seleccionando Rails como maquina por defecto
 2. Cuando se haya creado la MV a partir de la clonación, realizar las tareas a continuación
     - git init
-    - git commit -m "El cambio deseado"
+    - git commit -am "El cambio deseado"
     - git remote add origin https://github.com/mzabala23/PF_RubyRails/tree/proyecto
-    - git commit -am "Nombre del cambio"
     - git push origin proyecto
