@@ -23,5 +23,6 @@ Prerequisitos
     - git remote add origin https://github.com/mzabala23/PF_RubyRails/tree/proyecto
     - git push origin proyecto
 3. A continuación el enlace para configurar el motor de base de datos PostgreSQL (https://github.com/mzabala23/PF_RubyRails/wiki/Instalando-PostgreSQL-en-Clod9)
-
+4. Para actualizar el repositorio local o Stagin Area se debe utilizar el siguiente comando
+    
 <b>Nota:</b> El enunciado del proyecto final lo pueden ver a continuación (https://github.com/mzabala23/PF_RubyRails/wiki/Enunciado-Proyecto-Final)
