@@ -2,11 +2,54 @@
 <html>
 <head>
   <title>Workspace</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <nav class="be-green white large-padding">
+    <ul class="no list row center-xs around-xs">
+       <li class="no-margin" id="logo">
+         <%= link_to "Sistema Calificaciones", root_path %>
+       </li>
+       <% if current_user %>
+      <% if current_user.permission_level == "Administrador" %>
+        <li class="col-md">
+        <%= link_to "Facultad", new_faculty_path %>
+      </li>
+      <li class="col-md">
+        Programa
+      </li>
+      <li class="col-md">
+        Materia
+      </li>
+      <li class="col-md">
+        Semestre
+      </li>
+      <%else%>
+      <li class="col-md">
+        Profesor
+      </li>
+      <li class="col-md">
+        Materia
+      </li>
+      <%end%>
+      <%end%>
+      
+      
+      <% if current_user %>
+      <li class="col-md"><%= link_to 'Editar Perfil',edit_user_registration_path %></li>
+      <li class="col-md"><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
+       <% else %>
+       <li class="col-md"><%= link_to 'Ingresar', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
 <%= yield %>
 

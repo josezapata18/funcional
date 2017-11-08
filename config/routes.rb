@@ -1,9 +1,30 @@
 Rails.application.routes.draw do
+  
+  
+  resources :metters
+  resources :programs
+  resources :faculties
+  resources :matters
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  root 'welcome#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+
+=begin 
+ # 
+  #  get "/articles" index
+  #  post "/articles" create
+  #  delete "/articles" delete
+  #  get "/articles/:id" show
+  #  get "/articles/new" new
+  #  get "/articles/:id/edit" edit
+  #  patch "/articles/:id" update
+  #  put "/articles/:id" insert
+=end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
