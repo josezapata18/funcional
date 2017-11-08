@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @metter.name %>
+</p>
+
+<p>
+  <strong>Program:</strong>
+  <%= @metter.program %>
+</p>
+
+<%= link_to 'Edit', edit_metter_path(@metter) %> |
+<%= link_to 'Back', metters_path %>

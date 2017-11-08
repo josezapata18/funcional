@@ -14,6 +14,17 @@ default: &default
   timeout: 5000
   port: 5432
 
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: ivgocoaqilrdtt
+  password: e4e9938144c3f737648f801d24a934ae2983ddefb7d14d099f826ea963999112
+  host: ec2-50-16-204-127.compute-1.amazonaws.com
+  timeout: 5000
+  port: 5432
+
+
 development:
   <<: *default
   database: app_development
@@ -26,5 +37,5 @@ test:
   database: app_test
 
 production:
-  <<: *default
-  database: app_production
+  <<: *production
+  database: dc03iev66tpbge
