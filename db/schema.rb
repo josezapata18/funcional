@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107222122) do
+ActiveRecord::Schema.define(version: 20171116025712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20171107222122) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "has_matters", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "metter_id"
+    t.integer  "calification"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "has_matters", ["metter_id"], name: "index_has_matters_on_metter_id", using: :btree
+  add_index "has_matters", ["user_id"], name: "index_has_matters_on_user_id", using: :btree
 
   create_table "metters", force: :cascade do |t|
     t.string   "name"
@@ -39,6 +50,15 @@ ActiveRecord::Schema.define(version: 20171107222122) do
   end
 
   add_index "programs", ["faculty_id"], name: "index_programs_on_faculty_id", using: :btree
+
+  create_table "semesters", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "metter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "semesters", ["metter_id"], name: "index_semesters_on_metter_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",           null: false
@@ -63,6 +83,9 @@ ActiveRecord::Schema.define(version: 20171107222122) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "has_matters", "metters"
+  add_foreign_key "has_matters", "users"
   add_foreign_key "metters", "programs"
   add_foreign_key "programs", "faculties"
+  add_foreign_key "semesters", "metters"
 end

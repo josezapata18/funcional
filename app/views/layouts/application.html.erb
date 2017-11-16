@@ -15,27 +15,31 @@
          <%= link_to "Sistema Calificaciones", root_path %>
        </li>
        <% if current_user %>
-      <% if current_user.permission_level == "Administrador" %>
-        <li class="col-md">
-        <%= link_to "Facultad", new_faculty_path %>
-      </li>
-      <li class="col-md">
-        Programa
-      </li>
-      <li class="col-md">
-        Materia
-      </li>
-      <li class="col-md">
-        Semestre
-      </li>
-      <%else%>
-      <li class="col-md">
-        Profesor
-      </li>
-      <li class="col-md">
-        Materia
-      </li>
-      <%end%>
+          <% if current_user.permission_level == "Administrador" %>
+            <li class="col-md">
+            <%= link_to "Facultad", new_faculty_path %>
+          </li>
+          <li class="col-md">
+            <%= link_to "Programa", new_program_path %>
+          </li>
+          <li class="col-md">
+            <%= link_to "Materia", new_metter_path %>
+          </li>
+          <li class="col-md">
+            <%= link_to "Semestre", new_semester_path %>
+          </li>
+          <%else%>
+           <% if current_user.permission_level == "Estudiante" %>
+          <li class="col-md">
+            <%= link_to "Calificar Profesor", "welcome/calificar" %>
+          </li>
+          <%end%>
+           <% if current_user.permission_level == "Profesor" %>
+          <li class="col-md">
+            <%= link_to "Materia", new_metter_path %>
+          </li>
+          <%end%>
+          <%end%>
       <%end%>
       
       

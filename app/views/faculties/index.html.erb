@@ -1,27 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Faculties</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="top-space center-xs">
+  
+      <h1>Lista de Facultades</h1>
     <% @faculties.each do |faculty| %>
-      <tr>
-        <td><%= faculty.name %></td>
-        <td><%= link_to 'Show', faculty %></td>
-        <td><%= link_to 'Edit', edit_faculty_path(faculty) %></td>
-        <td><%= link_to 'Destroy', faculty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="row center-xs">
+     
+      <div class="col-xs-1 col-md-1">
+        
+        <%= faculty.name %>
+      </div>
+      <div class="col-xs-1 col-md-1">
+        <%= link_to 'Detalles', faculty %>
+      </div class="col-xs-1 col-md-1">
+        <%= link_to 'Editar', edit_faculty_path(faculty) %>
+      <div>
+        <div class="col-xs-1 col-md-1">
+          <%= link_to 'Eliminar', faculty, method: :delete, data: { confirm: 'Seguro que desea borrar?' },class:"red" %>
+        </div>
+      </div>
+    </div>
+     <% end %>
+</div>
+<div class="top-space blue">
+   <%= link_to 'Agregar Facultad', new_faculty_path %>
+</div>
 
-<br>
 
-<%= link_to 'New Faculty', new_faculty_path %>
+

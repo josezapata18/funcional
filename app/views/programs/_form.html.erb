@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :faculty_id %><br>
-    <%= f.text_field :faculty_id %>
+    <%= f.select :faculty_id, Faculty.all.collect {|x| [x.name, x.id]}, {}, :multiple => false %>
   </div>
   <div class="actions">
     <%= f.submit %>

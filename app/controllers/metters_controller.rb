@@ -1,6 +1,8 @@
 class MettersController < ApplicationController
   before_action :set_metter, only: [:show, :edit, :update, :destroy]
 
+  def calificar
+  end
   # GET /metters
   # GET /metters.json
   def index
@@ -10,21 +12,31 @@ class MettersController < ApplicationController
   # GET /metters/1
   # GET /metters/1.json
   def show
+    @users = User.where("permission_level = 'Estudiante'")
   end
 
   # GET /metters/new
   def new
     @metter = Metter.new
+    @users = User.new
+    @users = User.where("permission_level = 'Estudiante'")
+    @usersT = User.where("permission_level = 'Profesor'")
+    
+   # 
   end
 
   # GET /metters/1/edit
   def edit
+     @users = User.where("permission_level = 'Estudiante'")
+     @usersT = User.where("permission_level = 'Profesor'")
   end
 
   # POST /metters
   # POST /metters.json
   def create
     @metter = Metter.new(metter_params)
+    @metter.users = params[:users]
+    
 
     respond_to do |format|
       if @metter.save
@@ -69,6 +81,6 @@ class MettersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def metter_params
-      params.require(:metter).permit(:name, :program_id)
+      params.require(:metter).permit(:name, :program_id, :users)
     end
 end

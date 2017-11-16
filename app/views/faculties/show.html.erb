@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @faculty.name %>
-</p>
+<div class="top-space center-xs">
+    <p>
+    <strong>Nombre:</strong>
+    <%= @faculty.name %>
+  </p>
+  
+  <%= link_to 'Editar', edit_faculty_path(@faculty),class:"underline" %> |
+  <%= link_to 'Atras', faculties_path,class:"underline" %>
+</div>
 
-<%= link_to 'Edit', edit_faculty_path(@faculty) %> |
-<%= link_to 'Back', faculties_path %>

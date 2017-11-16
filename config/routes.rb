@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   
   
+  resources :semesters
+  resources :matters
   resources :metters
   resources :programs
   resources :faculties
-  resources :matters
   devise_for :users, :controllers => { registrations: 'registrations' }
   root 'welcome#index'
-
+  get 'welcome/calificar'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

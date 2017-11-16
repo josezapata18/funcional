@@ -17,7 +17,25 @@
   </div>
   <div class="field">
     <%= f.label :program_id %><br>
-    <%= f.text_field :program_id %>
+    <%= f.select :program_id, Program.all.collect {|x| [x.name, x.id]}, {}, :multiple => false %>
+  </div>
+  <% if current_user.permission_level == "Profesor" or current_user.permission_level == "Administrador" %>
+    <label>Estudiantes</label>
+    <% @users.each do |user_id| %>
+    <div class="field">
+      <%= check_box_tag "users[]", user_id.id%> <%= user_id.name%> <%= user_id.last_name%>
+    </div>
+    <%end%>
+  <%end%>
+  
+  <% if current_user.permission_level == "Administrador" %>
+    <label>Profesor</label>
+    <% @usersT.each do |user_id| %>
+    <div class="field">
+      <%= check_box_tag "users[]", user_id.id%> <%= user_id.name%> <%= user_id.last_name%>
+    </div>
+    <%end%>
+  <%end%>
   </div>
   <div class="actions">
     <%= f.submit %>

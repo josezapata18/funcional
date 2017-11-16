@@ -7,8 +7,31 @@
 
 <p>
   <strong>Program:</strong>
-  <%= @metter.program %>
+  <%= @metter.program.name %>
+</p>
+<p>
+  <strong>Estudiantes Inscritos</strong>
+  <% @metter.users.where(permission_level: "Estudiante").find_each do |user|%>
+  <div class="field">
+     <label>
+       Nombres: 
+     </label> <%= user.name%> <%= user.last_name%>
+     </div>
+  
+  <%end%>
 </p>
 
+<p>
+  <strong>Profesor de la materia escrito</strong>
+ <% @metter.users.where(permission_level: "Profesor").find_each do |user|%>
+  <div class="field">
+     <label>
+       Nombres: 
+     </label> <%= user.name%> <%= user.last_name%>
+     </div>
+  
+  <%end%>
+  
+</p>
 <%= link_to 'Edit', edit_metter_path(@metter) %> |
 <%= link_to 'Back', metters_path %>

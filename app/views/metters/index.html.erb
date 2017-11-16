@@ -15,7 +15,7 @@
     <% @metters.each do |metter| %>
       <tr>
         <td><%= metter.name %></td>
-        <td><%= metter.program %></td>
+        <td><%= metter.program.name %></td>
         <td><%= link_to 'Show', metter %></td>
         <td><%= link_to 'Edit', edit_metter_path(metter) %></td>
         <td><%= link_to 'Destroy', metter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
